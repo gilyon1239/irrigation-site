@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software | Irrigation Controller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Literata:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="site-name" href="index.html">Irrigation Controller</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="software.html" aria-current="page">Software</a>
+      <a href="challenges.html">Challenges</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Software</h1>
+    <p class="intro">We wrote the firmware in C using Keil µVision.</p>
+    <h2>Keeping time</h2>
+    <p>When the controller starts, it reads the current time from the real-time clock. The function <code>setupTime()</code> sets the clock, and it must only run once, not every time the system boots.</p>
+    <h2>The watering loop</h2>
+    <p>The main loop checks the time over and over. When it's time to water, it switches the relay on, and when watering is done, it switches it off.</p>
+    <h2>Controlling the servo</h2>
+    <p>The servo's position is set by the width of a PWM pulse. The program calculates this width and sends it to the servo.</p>
+    <h2>The touchscreen menus</h2>
+    <p>The interface has several screens. Each button only works on the screen it belongs to, so a touch on one screen can't trigger a button from another.</p>
+  </main>
+  <footer>Made by GC and Aviv</footer>
+</body>
+</html>

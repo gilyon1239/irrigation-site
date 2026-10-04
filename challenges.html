@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Challenges | Irrigation Controller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Literata:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="site-name" href="index.html">Irrigation Controller</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="software.html">Software</a>
+      <a href="challenges.html" aria-current="page">Challenges</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Challenges</h1>
+    <p class="intro">Not everything worked the first time. Here are the biggest problems we solved.</p>
+    <div class="item">
+      <h3>The clock kept forgetting the time</h3>
+      <p>Every time the system restarted, the time went back to the start.</p>
+      <p class="fix"><strong>The fix:</strong> <code>setupTime()</code> was running on every boot and overwriting the clock. We stopped it from resetting the time on startup.</p>
+    </div>
+    <div class="item">
+      <h3>The relay restarted the microcontroller</h3>
+      <p>Switching the relay caused a voltage drop (a brownout) that reset the whole system.</p>
+      <p class="fix"><strong>The fix:</strong> drive the relay through a MOSFET with a flyback diode, which absorbs the voltage spike from the relay coil.</p>
+    </div>
+    <div class="item">
+      <h3>The relay switched on and off too fast</h3>
+      <p>The watering loop toggled the relay many times in a row instead of once.</p>
+      <p class="fix"><strong>The fix:</strong> we debugged the loop so the relay only changes state when it really should.</p>
+    </div>
+    <div class="item">
+      <h3>The servo didn't move correctly</h3>
+      <p>The PWM pulse was too short, so the servo didn't reach the right position.</p>
+      <p class="fix"><strong>The fix:</strong> scale the pulse width: <code>width = 4 * width</code>.</p>
+    </div>
+  </main>
+  <footer>Made by Gilad and Aviv<br>site made by Gilad Cohen</footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hardware | Irrigation Controller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Literata:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="site-name" href="index.html">Irrigation Controller</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="hardware.html" aria-current="page">Hardware</a>
+      <a href="software.html">Software</a>
+      <a href="challenges.html">Challenges</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Hardware</h1>
+    <p class="intro">These are the main parts of the controller. We drew the full circuit in EasyEDA.</p>
+
+    <h2>The brain</h2>
+    <div class="item">
+      <h3>C8051F380 microcontroller</h3>
+      <p>The brain of the system. It reads all the sensors and modules, handles the touchscreen and decides when to water.</p>
+    </div>
+
+    <h2>Sensors and modules</h2>
+    <div class="item">
+      <h3>Real-time clock module (DS1307 / DS3231)</h3>
+      <p>An external clock module that counts the real time and date. It has its own backup battery, so it keeps counting even when the main power is off, and the 8051 reads the time from it over I2C.</p>
+    </div>
+    <div class="item">
+      <h3>Soil moisture sensors</h3>
+      <p>Three sensors (right, front and left) measure how wet the soil is, so the system only waters where it's dry.</p>
+    </div>
+    <div class="item">
+      <h3>Light sensor (TEMT6000)</h3>
+      <p>A phototransistor: the more light hits it, the more current flows through it. A resistor on the module turns that current into a voltage, which the microcontroller reads through the ADC to know how bright it is.</p>
+    </div>
+    <div class="item">
+      <h3>Rain sensor (MH-RD raindrops module)</h3>
+      <p>A board with copper tracks that detects water drops on its surface, so the system doesn't water the plants when nature is already doing it.</p>
+    </div>
+    <div class="item">
+      <h3>Temperature sensor (LM75)</h3>
+      <p>A digital temperature sensor that sends its reading over I2C, the same bus the clock module uses. The temperature is shown live on the touchscreen.</p>
+    </div>
+
+    <h2>Outputs and display</h2>
+    <div class="item">
+      <h3>Relay module</h3>
+      <p>An electrical switch the microcontroller uses to turn the water on and off.</p>
+    </div>
+    <div class="item">
+      <h3>Servo motor</h3>
+      <p>Controlled with a PWM signal to move to an exact position.</p>
+    </div>
+    <div class="item">
+      <h3>Touchscreen LCD (320×240)</h3>
+      <p>Lets the user see live sensor data and change settings across several screens.</p>
+    </div>
+
+    <h2>Inside the boxes</h2>
+    <figure>
+      <img src="images/inside-control-box.jpg" alt="Inside the control box lid, with bundled orange, blue and white wires connecting the modules">
+      <figcaption>Inside the control box: all the wiring between the microcontroller and the modules.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/inside-water-box.jpg" alt="Inside the water box, with wires running to the sensors and the motor">
+      <figcaption>Inside the water box: wires running to the sensors and the motor.</figcaption>
+    </figure>
+  </main>
+  <footer>Made by Gilad and Aviv<br>site made by Gilad Cohen</footer>
+</body>
+</html>
